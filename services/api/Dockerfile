@@ -7,5 +7,7 @@ RUN npm ci
 COPY . .
 
 EXPOSE 3000
-RUN npm run build
-CMD ["node", "dist/index.js"]
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+CMD ["/entrypoint.sh"]

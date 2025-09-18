@@ -5,41 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf331160-0c39-4467-a87c-ea41b8186186" name="Changes" comment="Setup">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/.npmrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/src/app.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/src/app.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/src/lib/assets/favicon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/src/lib/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/src/routes/+layout.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/src/routes/+page.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/static/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/svelte.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/vite.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/api/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/api/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/api/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/api/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/api/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/api/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/api/tsup.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/worker/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/worker/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/worker/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/worker/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/worker/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/worker/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/worker/tsup.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Pulse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Pulse.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/api/entrypoint.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +41,9 @@
     "accountId": "d1735b39-0ef4-4fdb-be54-aa782b4d6c3f"
   }
 }]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -82,15 +56,17 @@
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Docker.Production.executor": "Run",
     "Docker.docker-compose.dev.yml: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Node.js.index.ts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "SHELLCHECK.PATH": "/home/niels/.local/share/JetBrains/WebStorm2025.2/Shell Script/shellcheck",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/niels/dev/Pulse/services/worker",
+    "last_opened_file_path": "/home/niels/dev/Pulse/docker-compose.yml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,6 +75,11 @@
     "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "/home/niels/dev/Pulse/services/api/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -123,7 +104,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758197843264</updated>
       <workItem from="1758197844270" duration="11000" />
-      <workItem from="1758197873262" duration="2583000" />
+      <workItem from="1758197873262" duration="4035000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -133,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758197978484</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Setup">
+      <option name="closed" value="true" />
+      <created>1758203613815</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758203613815</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,6 +1,8 @@
 FROM node:20
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y netcat-openbsd && rm -rf /var/lib/apt/lists/*
+
 COPY package*.json ./
 RUN npm ci
 
@@ -8,6 +10,8 @@ COPY . .
 
 EXPOSE 3000
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-CMD ["/entrypoint.sh"]
+RUN npm run build
+
+COPY wait-for-db.sh /wait-for-db.sh
+RUN chmod +x /wait-for-db.sh
+CMD ["/wait-for-db.sh"]

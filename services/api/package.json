@@ -5,7 +5,7 @@
   "scripts": {
     "prisma:deploy": "npx prisma migrate deploy",
     "prisma:generate": "npx prisma generate",
-    "dev": "ts-node-dev --respawn src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only --poll src/index.ts",
     "build": "tsup"
   },
   "devDependencies": {
@@ -17,7 +17,9 @@
   },
   "dependencies": {
     "@prisma/client": "^6.16.2",
+    "argon2": "^0.44.0",
     "express": "^5.1.0",
-    "prisma": "^6.16.2"
+    "prisma": "^6.16.2",
+    "zod": "^4.1.11"
   }
 }

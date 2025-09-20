@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf331160-0c39-4467-a87c-ea41b8186186" name="Changes" comment="Add IntelliJ IDEA data sources configuration for PostgreSQL setup">
-      <change afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/api/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="cf331160-0c39-4467-a87c-ea41b8186186" name="Changes" comment="Refactor API entrypoint process and update configuration for Docker and Prisma">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/api/entrypoint.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/api/wait-for-db.sh" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +67,7 @@
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Docker.Development.executor": "Run",
     "Docker.Production.executor": "Run",
     "Docker.docker-compose.dev.yml: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
@@ -109,7 +105,7 @@
       <recent name="$PROJECT_DIR$/services/api" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.Production">
+  <component name="RunManager" selected="Docker.Development">
     <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
       <deployment type="docker-image" />
       <method v="2" />
@@ -124,6 +120,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Docker.Production" />
+      <item itemvalue="Docker.Development" />
+      <item itemvalue="npm.dev" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
@@ -146,7 +147,7 @@
       <updated>1758197843264</updated>
       <workItem from="1758197844270" duration="11000" />
       <workItem from="1758197873262" duration="5402000" />
-      <workItem from="1758386926145" duration="2584000" />
+      <workItem from="1758386926145" duration="4706000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -172,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758205215072</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactor API entrypoint process and update configuration for Docker and Prisma">
+      <option name="closed" value="true" />
+      <created>1758389593954</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758389593954</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +191,7 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Setup" />
     <MESSAGE value="Add IntelliJ IDEA data sources configuration for PostgreSQL setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add IntelliJ IDEA data sources configuration for PostgreSQL setup" />
+    <MESSAGE value="Refactor API entrypoint process and update configuration for Docker and Prisma" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor API entrypoint process and update configuration for Docker and Prisma" />
   </component>
 </project>

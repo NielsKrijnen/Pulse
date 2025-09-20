@@ -1,12 +1,14 @@
 services:
   api:
     image: node:20
-    command: ["sh", "/app/entrypoint.sh"]
+    command: >
+      sh -c "npm run prisma:deploy && npm run prisma:generate && npm run dev"
     working_dir: /app
     environment:
       DATABASE_URL: postgres://postgres:password@db:5432/postgres
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       - ./services/api:/app
     ports:
@@ -20,3 +22,8 @@ services:
       POSTGRES_DB: postgres
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 2s
+      retries: 20

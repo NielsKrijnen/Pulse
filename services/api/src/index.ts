@@ -5,13 +5,18 @@ const prisma = new PrismaClient()
 const app = express()
 
 app.get("/users", async (_, res) => {
-  const users = await prisma.user.findMany({
-    omit: {
-      password: true
-    }
-  })
+  try {
+    const users = await prisma.user.findMany({
+      omit: {
+        password: true
+      }
+    })
 
-  res.json(users)
+    res.json(users)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send()
+  }
 })
 
 app.get("/users/:id", async (req, res) => {
@@ -26,10 +31,10 @@ app.get("/users/:id", async (req, res) => {
       return res.status(404)
     }
 
-    return res.json(user)
+    res.json(user)
   } catch (error) {
     console.error(error)
-    return res.status(500)
+    res.status(500).send()
   }
 })
 

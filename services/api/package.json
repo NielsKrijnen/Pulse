@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prisma:deploy": "npx prisma migrate deploy",
+    "prisma:generate": "npx prisma generate",
+    "dev": "ts-node-dev --respawn src/index.ts",
     "build": "tsup"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^24.5.2",
+    "ts-node-dev": "^2.0.0",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2"
   },

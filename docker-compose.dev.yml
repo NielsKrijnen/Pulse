@@ -1,0 +1,22 @@
+services:
+  api:
+    image: node:20
+    command: ["sh", "/app/entrypoint.sh"]
+    working_dir: /app
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/postgres
+    depends_on:
+      - db
+    volumes:
+      - ./services/api:/app
+    ports:
+      - "3000:3000"
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"

@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf331160-0c39-4467-a87c-ea41b8186186" name="Changes" comment="Add IntelliJ IDEA data sources configuration for PostgreSQL setup">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/api/entrypoint.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/api/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/wait-for-db.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/api/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/api/wait-for-db.sh" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,17 +41,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "NielsKrijnen"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NielsKrijnen&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/NielsKrijnen/Pulse.git",
-    "accountId": "d1735b39-0ef4-4fdb-be54-aa782b4d6c3f"
+    "accountId": "b28971af-28cc-4962-b27a-e0b1d030dc65"
   }
+}]]></component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
 }]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -72,8 +79,10 @@
     "Node.js.index.ts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "SHELLCHECK.PATH": "/home/niels/.local/share/JetBrains/WebStorm2025.2/Shell Script/shellcheck",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "I do mind",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/home/niels/dev/Pulse/docker-compose.yml",
     "node.js.detected.package.eslint": "true",
@@ -81,8 +90,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "/home/niels/dev/Pulse/services/api/node_modules/typescript/lib",
+    "ts.external.directory.path": "D:\\Projects\\Pulse\\services\\api\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -98,10 +109,31 @@
       <recent name="$PROJECT_DIR$/services/api" />
     </key>
   </component>
+  <component name="RunManager" selected="Docker.Production">
+    <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
+      <deployment type="docker-image" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/services/api/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-WS-252.25557.126" />
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
       </set>
     </attachedChunks>
   </component>
@@ -114,6 +146,7 @@
       <updated>1758197843264</updated>
       <workItem from="1758197844270" duration="11000" />
       <workItem from="1758197873262" duration="5402000" />
+      <workItem from="1758386926145" duration="2584000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />

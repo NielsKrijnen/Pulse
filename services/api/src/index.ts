@@ -2,6 +2,14 @@ import { PrismaClient } from "@prisma/client";
 import express, { Request, Response, NextFunction } from "express"
 import { z } from "zod";
 import * as argon from "argon2"
+import { Queue } from "bullmq";
+
+const deployments = new Queue("deployments", {
+  connection: {
+    host: process.env.REDIS_HOST || "redis",
+    port: process.env.REDIS_PORT ? Number(process.env.REDIS_PORT) : 6379
+  }
+})
 
 const prisma = new PrismaClient()
 const app = express()
@@ -65,6 +73,12 @@ app.patch("/users/:id", async (req, res) => {
   }).catch(() => res.status(404).send())
 
   res.json(user)
+})
+
+app.post("/deployments", async (req, res) => {
+  await deployments.add("new-deployment", {})
+
+  res.status(204).send()
 })
 
 app.use((err: unknown, _: Request, res: Response, __: NextFunction) => {

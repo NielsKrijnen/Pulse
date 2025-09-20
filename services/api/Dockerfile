@@ -9,7 +9,6 @@ COPY . .
 EXPOSE 3000
 
 RUN npm run build
-
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-CMD ["/entrypoint.sh"]
+RUN npm run prisma:deploy
+RUN npm run prisma:generate
+CMD ["node", "dist/index.js"]

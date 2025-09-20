@@ -6,9 +6,13 @@ services:
     working_dir: /app
     environment:
       DATABASE_URL: postgres://postgres:password@db:5432/postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
     depends_on:
       db:
         condition: service_healthy
+      redis:
+        condition: service_started
     volumes:
       - ./services/api:/app
     ports:
@@ -27,3 +31,18 @@ services:
       interval: 5s
       timeout: 2s
       retries: 20
+
+  worker:
+    image: node:20
+    command: npm run dev
+    working_dir: /app
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - redis
+    volumes:
+      - ./services/worker:/app
+
+  redis:
+    image: redis

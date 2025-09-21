@@ -33,8 +33,9 @@ services:
       retries: 20
 
   worker:
-    image: node:20
-    command: npm run dev
+    image: node:20-alpine
+    command: >
+      sh -c "apk add --no-cache docker-cli git && npm run dev"
     working_dir: /app
     environment:
       REDIS_HOST: redis
@@ -43,6 +44,7 @@ services:
       - redis
     volumes:
       - ./services/worker:/app
+      - /var/run/docker.sock:/var/run/docker.sock
 
   redis:
     image: redis

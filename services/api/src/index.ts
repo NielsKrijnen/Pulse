@@ -75,8 +75,18 @@ app.patch("/users/:id", async (req, res) => {
   res.json(user)
 })
 
+const DeploymentSchema = z.object({
+  type: z.enum(["github"]),
+  repository: z.string(),
+  branch: z.string()
+})
+
+export type Deployment = z.infer<typeof DeploymentSchema>
+
 app.post("/deployments", async (req, res) => {
-  await deployments.add("new-deployment", {})
+  const data = DeploymentSchema.parse(req.body)
+
+  await deployments.add("new-deployment", data)
 
   res.status(204).send()
 })

@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf331160-0c39-4467-a87c-ea41b8186186" name="Changes" comment="Add Redis service and BullMQ; improve health checks and dependencies&#10;&#10;- Introduce Redis service in `docker-compose.yml`.&#10;- Add BullMQ library to `api` and `worker` services for job queue processing.&#10;- Enhance Docker health checks for PostgreSQL and dependency handling. &#10;- Update package dependencies in both `api` and `worker` services.">
+    <list default="true" id="cf331160-0c39-4467-a87c-ea41b8186186" name="Changes" comment="Add deployment job processing using BullMQ and Docker integration&#10;&#10;- Extend job schema with deployment details (`repository`, `branch`).&#10;- Implement worker logic for building Docker images using deployment data.&#10;- Update `docker-compose` to include necessary tools for running Docker commands in the worker service.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Pulse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Pulse.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/api/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/worker/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/worker/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/worker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/worker/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/worker/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/worker/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,6 +72,7 @@
     "Docker.Development.executor": "Run",
     "Docker.Docker Image.executor": "Run",
     "Docker.Production.executor": "Run",
+    "Docker.docker-compose.dev.yml.redis: Compose Deployment.executor": "Run",
     "Docker.docker-compose.dev.yml: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -105,6 +110,10 @@
     </key>
   </component>
   <component name="RunManager" selected="Docker.Development">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
       <deployment type="docker-image">
         <settings />
@@ -133,7 +142,7 @@
       <workItem from="1758197844270" duration="11000" />
       <workItem from="1758197873262" duration="5402000" />
       <workItem from="1758386926145" duration="5906000" />
-      <workItem from="1758468204558" duration="2797000" />
+      <workItem from="1758468204558" duration="6125000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -183,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758392905305</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add deployment job processing using BullMQ and Docker integration&#10;&#10;- Extend job schema with deployment details (`repository`, `branch`).&#10;- Implement worker logic for building Docker images using deployment data.&#10;- Update `docker-compose` to include necessary tools for running Docker commands in the worker service.">
+      <option name="closed" value="true" />
+      <created>1758471051564</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1758471051564</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +213,7 @@
     <MESSAGE value="Refactor API entrypoint process and update configuration for Docker and Prisma" />
     <MESSAGE value="Add CRUD endpoints, input validation, and password hashing for users; update dependencies and Docker health checks" />
     <MESSAGE value="Add Redis service and BullMQ; improve health checks and dependencies&#10;&#10;- Introduce Redis service in `docker-compose.yml`.&#10;- Add BullMQ library to `api` and `worker` services for job queue processing.&#10;- Enhance Docker health checks for PostgreSQL and dependency handling. &#10;- Update package dependencies in both `api` and `worker` services." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Redis service and BullMQ; improve health checks and dependencies&#10;&#10;- Introduce Redis service in `docker-compose.yml`.&#10;- Add BullMQ library to `api` and `worker` services for job queue processing.&#10;- Enhance Docker health checks for PostgreSQL and dependency handling. &#10;- Update package dependencies in both `api` and `worker` services." />
+    <MESSAGE value="Add deployment job processing using BullMQ and Docker integration&#10;&#10;- Extend job schema with deployment details (`repository`, `branch`).&#10;- Implement worker logic for building Docker images using deployment data.&#10;- Update `docker-compose` to include necessary tools for running Docker commands in the worker service." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add deployment job processing using BullMQ and Docker integration&#10;&#10;- Extend job schema with deployment details (`repository`, `branch`).&#10;- Implement worker logic for building Docker images using deployment data.&#10;- Update `docker-compose` to include necessary tools for running Docker commands in the worker service." />
   </component>
 </project>

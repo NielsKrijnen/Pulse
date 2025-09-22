@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf331160-0c39-4467-a87c-ea41b8186186" name="Changes" comment="Add deployment job processing using BullMQ and Docker integration&#10;&#10;- Extend job schema with deployment details (`repository`, `branch`).&#10;- Implement worker logic for building Docker images using deployment data.&#10;- Update `docker-compose` to include necessary tools for running Docker commands in the worker service.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Pulse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Pulse.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+    <list default="true" id="cf331160-0c39-4467-a87c-ea41b8186186" name="Changes" comment="Update worker job for Docker image building and deployment&#10;&#10;- Add logic to pull the base Docker image (`docker:24-dind`) if not available.&#10;- Implement repository cloning, Docker image building, and deployment process in job tasks.&#10;- Update `.gitignore` and adjust IntelliJ configuration files.&#10;- Modify worker service to include Docker build logs and enhanced container configuration.">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/worker/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/worker/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/worker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/services/worker/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/worker/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/worker/src/index.ts" afterDir="false" />
@@ -36,6 +33,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -44,12 +46,12 @@
     &quot;assignee&quot;: &quot;NielsKrijnen&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/NielsKrijnen/Pulse.git&quot;,
-    &quot;accountId&quot;: &quot;b28971af-28cc-4962-b27a-e0b1d030dc65&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/NielsKrijnen/Pulse.git",
+    "accountId": "d1735b39-0ef4-4fdb-be54-aa782b4d6c3f"
   }
-}</component>
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -81,7 +83,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHELLCHECK.PATH": "I do mind",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "new-worker",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/home/niels/dev/Pulse/docker-compose.yml",
@@ -93,7 +95,7 @@
     "npm.dev.executor": "Run",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "D:\\Projects\\Pulse\\services\\api\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/home/niels/dev/Pulse/services/api/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -111,7 +113,9 @@
   </component>
   <component name="RunManager" selected="Docker.Development">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
@@ -214,6 +218,7 @@
     <MESSAGE value="Add CRUD endpoints, input validation, and password hashing for users; update dependencies and Docker health checks" />
     <MESSAGE value="Add Redis service and BullMQ; improve health checks and dependencies&#10;&#10;- Introduce Redis service in `docker-compose.yml`.&#10;- Add BullMQ library to `api` and `worker` services for job queue processing.&#10;- Enhance Docker health checks for PostgreSQL and dependency handling. &#10;- Update package dependencies in both `api` and `worker` services." />
     <MESSAGE value="Add deployment job processing using BullMQ and Docker integration&#10;&#10;- Extend job schema with deployment details (`repository`, `branch`).&#10;- Implement worker logic for building Docker images using deployment data.&#10;- Update `docker-compose` to include necessary tools for running Docker commands in the worker service." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add deployment job processing using BullMQ and Docker integration&#10;&#10;- Extend job schema with deployment details (`repository`, `branch`).&#10;- Implement worker logic for building Docker images using deployment data.&#10;- Update `docker-compose` to include necessary tools for running Docker commands in the worker service." />
+    <MESSAGE value="Update worker job for Docker image building and deployment&#10;&#10;- Add logic to pull the base Docker image (`docker:24-dind`) if not available.&#10;- Implement repository cloning, Docker image building, and deployment process in job tasks.&#10;- Update `.gitignore` and adjust IntelliJ configuration files.&#10;- Modify worker service to include Docker build logs and enhanced container configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update worker job for Docker image building and deployment&#10;&#10;- Add logic to pull the base Docker image (`docker:24-dind`) if not available.&#10;- Implement repository cloning, Docker image building, and deployment process in job tasks.&#10;- Update `.gitignore` and adjust IntelliJ configuration files.&#10;- Modify worker service to include Docker build logs and enhanced container configuration." />
   </component>
 </project>

@@ -5,13 +5,15 @@ import Docker from "dockerode"
 const docker = new Docker({ socketPath: "/var/run/docker.sock" })
 
 const worker = new Worker<Deployment>("deployments", async job => {
-  console.log(job.data)
   const repository = job.data.repository.split("/").pop()?.replace(".git", "")?.toLowerCase() || "repo"
-  console.log(repository)
 
-  const containerName = `${repository}-${job.data.branch}`
   const imageTag = `${repository}:${job.data.branch}`
-  const host = `${repository}.localhost`
+
+  await fetch(`http://api:3000/deployments/${job.data.id}/status`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status: "building" })
+  })
 
   await new Promise<void>(async (resolve, reject) => {
     const stream = await docker.pull("docker:24-dind")
@@ -56,22 +58,11 @@ const worker = new Worker<Deployment>("deployments", async job => {
 
   await builder.wait()
 
-  const container = await docker.createContainer({
-    Image: imageTag,
-    name: containerName,
-    Labels: {
-      "traefik.enable": "true",
-      [`traefik.http.routers.${containerName}.rule`]: `Host(\`${host}\`)`,
-      [`traefik.http.routers.${containerName}.entrypoints`]: "web"
-    },
-    HostConfig: {
-      NetworkMode: "pulse_default"
-    }
+  await fetch(`http://api:3000/deployments/${job.data.id}/status`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status: "success" })
   })
-
-  await container.start()
-
-  console.log(`Running on http://${host}`)
 }, {
   connection: {
     host: process.env.REDIS_HOST || "redis",
@@ -80,6 +71,13 @@ const worker = new Worker<Deployment>("deployments", async job => {
   concurrency: 1
 })
 
-worker.on("failed", (job, error) => {
+worker.on("failed", async (job, error) => {
   console.log(`Job ${job?.id} failed: ${error.message}`)
+  if (job) {
+    await fetch(`http://api:3000/deployments/${job.data.id}/status`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status: "failed" })
+    })
+  }
 })

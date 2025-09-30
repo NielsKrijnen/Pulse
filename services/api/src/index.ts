@@ -78,15 +78,87 @@ app.patch("/users/:id", async (req, res) => {
 const DeploymentSchema = z.object({
   type: z.enum(["github"]),
   repository: z.string(),
-  branch: z.string()
+  branch: z.string(),
+  id: z.string()
 })
 
 export type Deployment = z.infer<typeof DeploymentSchema>
 
-app.post("/deployments", async (req, res) => {
-  const data = DeploymentSchema.parse(req.body)
+const ProjectSchema = z.object({
+  user: z.uuid(),
+  name: z.string(),
+  repoUrl: z.url()
+})
 
-  await deployments.add("new-deployment", data)
+app.get("/projects", async (_, res) => {
+  const projects = await prisma.project.findMany()
+
+  res.json(projects)
+})
+
+app.post("/projects", async (req, res) => {
+  const data = ProjectSchema.parse(req.body)
+
+  const project = await prisma.project.create({
+    data: {
+      userId: data.user,
+      name: data.name,
+      repoUrl: data.repoUrl
+    }
+  })
+
+  res.json(project)
+})
+
+app.post("/projects/:id/deploy", async (req, res) => {
+  const project = await prisma.project.findUnique({
+    where: { id: req.params.id }
+  })
+  if (!project) return res.status(404).send()
+
+  const deployment = await prisma.deployment.create({
+    data: {
+      projectId: project.id,
+      status: "queued"
+    }
+  })
+  await deployments.add(`${project.name}-${deployment.id}`, {
+    type: "github",
+    repository: project.repoUrl,
+    branch: "main",
+    id: deployment.id
+  })
+
+  res.json(deployment)
+})
+
+app.get("/deployments", async (_, res) => {
+  const deployments = await prisma.deployment.findMany()
+
+  res.json(deployments)
+})
+
+app.get("/deployments/:id", async (req, res) => {
+  const deployment = await prisma.deployment.findUnique({
+    where: { id: req.params.id }
+  })
+  if (!deployment) return res.status(404).send()
+
+  res.json(deployment)
+})
+
+app.post("/deployments/:id/status", async (req, res) => {
+  const data = z.object({
+    status: z.enum(["queued", "building", "success", "failed"])
+  }).parse(req.body)
+
+  await prisma.deployment.update({
+    data: {
+      status: data.status,
+      finishedAt: data.status === "success" ? new Date() : null
+    },
+    where: { id: req.params.id }
+  })
 
   res.status(204).send()
 })

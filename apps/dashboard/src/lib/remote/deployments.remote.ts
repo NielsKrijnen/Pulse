@@ -1,10 +1,16 @@
 import { getRequestEvent, query } from "$app/server";
 import { error } from "@sveltejs/kit";
+import { z } from "zod";
 
-export const list = query(async () => {
+export const list = query(z.object({
+  project: z.uuid().optional()
+}).optional(), async data => {
   const { fetch } = getRequestEvent()
 
-  const response = await fetch("http://api:3000/deployments")
+  const url = new URL("http://api:3000/deployments")
+  if (data?.project) url.searchParams.append("project", data.project)
+
+  const response = await fetch(url)
 
   if (response.ok) {
     return await response.json() as {

@@ -132,8 +132,16 @@ app.post("/projects/:id/deploy", async (req, res) => {
   res.json(deployment)
 })
 
-app.get("/deployments", async (_, res) => {
-  const deployments = await prisma.deployment.findMany()
+app.get("/deployments", async (req, res) => {
+  const data = z.object({
+    project: z.uuid().optional()
+  }).optional().parse(req.query)
+
+  const deployments = await prisma.deployment.findMany({
+    where: {
+      projectId: data?.project
+    }
+  })
 
   res.json(deployments)
 })

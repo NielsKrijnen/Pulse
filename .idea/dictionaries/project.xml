@@ -3,6 +3,7 @@
     <words>
       <w>entrypoints</w>
       <w>letsencrypt</w>
+      <w>sveltekit</w>
       <w>traefik</w>
     </words>
   </dictionary>

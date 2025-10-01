@@ -110,6 +110,15 @@ app.post("/projects", async (req, res) => {
   res.json(project)
 })
 
+app.get("/projects/:id", async (req, res) => {
+  const project = await prisma.project.findUnique({
+    where: { id: req.params.id }
+  })
+  if (!project) return res.status(404).send()
+
+  res.json(project)
+})
+
 app.post("/projects/:id/deploy", async (req, res) => {
   const project = await prisma.project.findUnique({
     where: { id: req.params.id }

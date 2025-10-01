@@ -15,7 +15,11 @@ export const list = query(z.object({
   if (response.ok) {
     return await response.json() as {
       id: string
+      projectId: string
       status: "queued" | "building" | "success" | "failed"
+      commitHash: string | null
+      log: string | null
+      createdAt: string
       finishedAt: string | null
     }[]
   } else {
